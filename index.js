@@ -7,6 +7,7 @@ const cors = require('cors');
 
 //Info local enviroments
 const port = process.env.PORT_SERVER || 3001;
+const host = process.env.HOST_SERVER || 'localhost';
 
 //Local Changes
 const server = require('./src/app.js');
