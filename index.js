@@ -7,7 +7,6 @@ const cors = require('cors');
 
 //Info local enviroments
 const port = process.env.PORT_SERVER || 3001;
-const host = process.env.HOST_SERVER || 'localhost';
 
 //Local Changes
 const server = require('./src/app.js');
@@ -24,7 +23,7 @@ server.use(rootRouter);
 //sincronizando base de datos con la DB_CLOUD
 db.sync({alter:true}).then(() => {
     //execute server
-    server.listen(port, host, () => {
+    server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
     })
 });
