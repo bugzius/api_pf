@@ -2,7 +2,8 @@ const { User, SellingTotal, Book, Review } = require('../db');
 
 module.exports = async function ({ picture, sub, email, name }) {
     const [,IdUser] = sub.split('|');
-
+    console.log(IdUser);
+    
     const [user, created] = await User.findOrCreate({ 
         where:{
             email
