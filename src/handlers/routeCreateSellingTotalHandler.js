@@ -10,6 +10,7 @@ module.exports = async function(req,res){
         
         //Validate values in body
         checkEmptyValuesObject({ products, IdUser });
+        console.log({products, IdUser});
         checkBooksValuesOrId(products);
 
         const SellingTotalCreated = await createSellingTotal({IdUser});
