@@ -3,7 +3,6 @@ const { setErrorInvalidId, setErrorEmptyValue } = require('./ErrorTypes');
 
 function checkBooksValuesOrId (books = []){
     if(!books.length) throw setErrorEmptyValue('Los lista de productos no pueden estar vacía');
-    
     const parsedIdBookByBook = parsedIdProducts(books);
     for(let IdBook of parsedIdBookByBook){
         const validateIdBook = validate(IdBook);

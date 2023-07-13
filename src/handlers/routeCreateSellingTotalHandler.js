@@ -10,18 +10,15 @@ module.exports = async function(req,res){
         
         //Validate values in body
         checkEmptyValuesObject({ products, IdUser });
-        console.log({products, IdUser});
         checkBooksValuesOrId(products);
 
         const SellingTotalCreated = await createSellingTotal({IdUser});
         const {IdSellingTotal} = SellingTotalCreated;
         
         await createBulKSellingIndividual({products, IdSellingTotal });
-
         const SellingTotal = await getASellingTotal({IdSelling: IdSellingTotal});
         res.json(SellingTotal);
-    } catch ({message, name}) {
-        console.log(name);
+    } catch (error) {
         res.json({error:`${name} | ${message}`});
     };
 };
