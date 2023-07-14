@@ -16,7 +16,12 @@ module.exports = async function ({ picture, sub, email, name }) {
                 include: [
                     {
                         model: Selling,
-                        as: 'products'
+                        as: 'products',
+                        include:[
+                            {
+                                model: Book
+                            }
+                        ]
                     }
                 ]
             },
