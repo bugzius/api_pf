@@ -1,26 +1,32 @@
 const { User, SellingTotal, Book, Review } = require('../db');
 
 module.exports = async function ({ picture, sub, email, name }) {
-    const [,IdUser] = sub.split('|');
-    
-    const [user, created] = await User.findOrCreate({ 
-        where:{
+    const [, IdUser] = sub.split('|');
+
+    const [user, created] = await User.findOrCreate({
+        where: {
             IdUser
         },
-        defaults:{
+        defaults: {
             picture, name, email
         },
-        include:[
+        include: [
             {
-                model: SellingTotal
+                model: SellingTotal,
+                include: [
+                    {
+                        model: Book,
+                        as: 'products'
+                    }
+                ]
             },
             {
                 model: Book,
-                as:'wichListBook'
+                as: 'wichListBook'
             },
             {
                 model: Review,
-                include:{
+                include: {
                     model: Book
                 }
             }
