@@ -1,4 +1,4 @@
-const { User, SellingTotal, Book, Review } = require('../db');
+const { User, Selling, SellingTotal, Book, Review } = require('../db');
 
 module.exports = async function () {
 
@@ -9,7 +9,7 @@ module.exports = async function () {
           model: SellingTotal,
           include: [
             {
-              model: Book,
+              model: Selling,
               as: 'products'
             }
           ]

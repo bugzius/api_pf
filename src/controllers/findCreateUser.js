@@ -1,4 +1,4 @@
-const { User, SellingTotal, Book, Review } = require('../db');
+const { User, SellingTotal, Selling, Book, Review } = require('../db');
 
 module.exports = async function ({ picture, sub, email, name }) {
     const [, IdUser] = sub.split('|');
@@ -15,7 +15,7 @@ module.exports = async function ({ picture, sub, email, name }) {
                 model: SellingTotal,
                 include: [
                     {
-                        model: Book,
+                        model: Selling,
                         as: 'products'
                     }
                 ]
