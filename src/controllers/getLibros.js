@@ -22,7 +22,13 @@ const getLibros = async () => {
                 attributes: ['language'],
             },
             {
-                model: Review
+                model: Review,
+                include: [
+                    {
+                        model: User,
+                        attributes: ['IdUser', 'isActive']
+                    }
+                ]
             },
             {
                 model: Selling,
