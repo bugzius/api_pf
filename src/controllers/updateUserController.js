@@ -26,7 +26,7 @@ const validationsAttributes = {
         const l = nameString.length;
         return l >= 5 && l <= 50
     },
-    isActive: stateUser => [true,false].includes(stateUser),
+    //isActive: stateUser => [true,false].includes(stateUser),
     email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
     address: addressString => {
         const l = addressString.trim().length;
@@ -74,6 +74,7 @@ module.exports = async function ({ id_user, dataToUpdate }) {
     throw new Error(`El usuario que intentas actualizar no existe`);
 
   //Si ya existe lo actualiza
+  //console.log(dataToUpdate)
   const user = await findUser.update(dataToUpdate);
 
   return user;
